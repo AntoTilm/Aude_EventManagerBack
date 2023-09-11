@@ -26,10 +26,16 @@ namespace EventManager.WebAPI.DataTransferObjects
         [Required]
         [RegularExpression("(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*\\W).{5,}")]
         public string Password { get; set; }
+
+        [Required]
+        public string FirstName { get; set; }
+        [Required]
+        public string LastName { get; set; }
     }
 
     public class AuthTokenDTO
     {
         public string Token { get; set; }
+        public MemberDTO Member { get; set; }
     }
 }

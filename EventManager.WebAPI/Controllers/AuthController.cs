@@ -1,6 +1,7 @@
 ﻿using EventManager.BLL.Interfaces;
 using EventManager.Domain.Entities;
 using EventManager.WebAPI.DataTransferObjects;
+using EventManager.WebAPI.DataTransferObjects.Mappers;
 using EventManager.WebAPI.Helpers;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -30,7 +31,7 @@ namespace EventManager.WebAPI.Controllers
         public IActionResult Login([FromBody] AuthLoginDTO loginDTO)
         {
             Member? member = _MemberService.Login(loginDTO.Identifier, loginDTO.Password);
-
+            
             if (member is null)
             {
                 ModelState.AddModelError("Message", "You have entered either the Username and/or Password incorrectly.");
@@ -39,8 +40,9 @@ namespace EventManager.WebAPI.Controllers
 
             return Ok(new AuthTokenDTO()
             {
-                Token = _TokenService.GenerateJwt(member)
-            });
+                Token = _TokenService.GenerateJwt(member),
+                Member = member.ToDTO()
+            });; ; ;
         }
 
         [HttpPost("Register")]
@@ -55,7 +57,9 @@ namespace EventManager.WebAPI.Controllers
             {
                 Pseudo = registerDTO.Pseudo,
                 Email = registerDTO.Email,
-                HashPwd = registerDTO.Password
+                HashPwd = registerDTO.Password,
+                Firstname= registerDTO.FirstName,
+                Lastname= registerDTO.LastName,
             });
 
             if (member is null)

@@ -13,7 +13,8 @@ namespace EventManager.WebAPI.DataTransferObjects.Mappers
                 Email = member.Email,
                 Firstname = member.Firstname,
                 Lastname = member.Lastname,
-                Birthdate = member.Birthdate
+                Birthdate = member.Birthdate,
+            
             };
         }
 

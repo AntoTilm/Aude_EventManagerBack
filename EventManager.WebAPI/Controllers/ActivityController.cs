@@ -74,6 +74,8 @@ namespace EventManager.WebAPI.Controllers
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(IEnumerable<ActivityImageDTO>))]
         public IActionResult GetNextActivities()
         {
+
+           
             IEnumerable<ActivityDTO> activities = _ActivityService.GetFutureActivities()
                                                                   .Select(ActivityMapper.ToDTO);
 
@@ -87,6 +89,7 @@ namespace EventManager.WebAPI.Controllers
         [ProducesResponseType(StatusCodes.Status403Forbidden)]
         public IActionResult GetMyActivities()
         {
+
             // Récuperation des events où l'utilisateur est inscrit
             IEnumerable<ActivityDTO> activities = _ActivityService.GetMemberActivities(CurrentUserId)
                                                                   .Select(c => c.ToDTO());

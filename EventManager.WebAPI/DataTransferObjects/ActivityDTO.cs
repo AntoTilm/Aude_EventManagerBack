@@ -12,7 +12,7 @@ namespace EventManager.WebAPI.DataTransferObjects
         public DateTime EndDate { get; set; }
         public int? MaxGuest { get; set; }
         public bool IsCancel { get; set; }
-        public MemberDTO? Creator { get; set; }
+        public int CreatorId { get; set; }
     }
 
     public class ActivityDataDTO

@@ -16,7 +16,7 @@ namespace EventManager.WebAPI.DataTransferObjects.Mappers
                 EndDate = activity.EndDate,
                 IsCancel = activity.IsCancel,
                 MaxGuest = activity.MaxGuest,
-                Creator = activity.Creator?.ToDTO()
+                CreatorId = activity.CreatorId
             };
         }
 
